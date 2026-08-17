@@ -1,3 +1,4 @@
+
 "use client";
 
 import {
@@ -244,8 +245,8 @@ export default function Home() {
                           : "",
                       mode:
                         value?.mode === "edit"
-                          ? "edit"
-                          : "generation",
+                          ? ("edit" as const)
+                          : ("generation" as const),
                     })
                   )
                   .sort(
@@ -752,6 +753,7 @@ ${user?.email || ""}`;
                 .
               </span>
               RENDERAI
+
               <span
                 style={{
                   marginLeft:
@@ -1946,26 +1948,32 @@ ${user?.email || ""}`;
                 {
                   points: 20,
                   price: 1,
+                  label: "Starter",
                 },
                 {
                   points: 50,
                   price: 3,
+                  label: "Basic",
                 },
                 {
                   points: 100,
                   price: 5,
+                  label: "Popular",
                 },
                 {
                   points: 500,
                   price: 15,
+                  label: "Pro",
                 },
                 {
                   points: 1000,
                   price: 25,
+                  label: "Business",
                 },
                 {
                   points: 1500,
                   price: 30,
+                  label: "Best Value",
                 },
               ].map(
                 (plan) => (
@@ -1988,6 +1996,42 @@ ${user?.email || ""}`;
                         "24px",
                     }}
                   >
+                    {(plan.points ===
+                      100 ||
+                      plan.points ===
+                        1500) && (
+                      <div
+                        style={{
+                          position:
+                            "absolute",
+                          top:
+                            "16px",
+                          right:
+                            "16px",
+                          padding:
+                            "5px 8px",
+                          borderRadius:
+                            "7px",
+                          border:
+                            "1px solid rgba(255,255,255,.1)",
+                          background:
+                            "rgba(255,255,255,.05)",
+                          color:
+                            "#aab2bd",
+                          fontSize:
+                            "8px",
+                          fontWeight:
+                            800,
+                          letterSpacing:
+                            "1px",
+                          textTransform:
+                            "uppercase",
+                        }}
+                      >
+                        {plan.label}
+                      </div>
+                    )}
+
                     <div
                       style={{
                         color:
@@ -2002,7 +2046,7 @@ ${user?.email || ""}`;
                           700,
                       }}
                     >
-                      Credit Pack
+                      {plan.label}
                     </div>
 
                     <div
@@ -2027,7 +2071,7 @@ ${user?.email || ""}`;
                             "-2px",
                         }}
                       >
-                        {plan.points}
+                        {plan.points.toLocaleString()}
                       </span>
 
                       <span
@@ -2396,10 +2440,9 @@ ${user?.email || ""}`;
       <style jsx>{`
         @media (max-width: 1000px) {
           .credits-grid {
-            grid-template-columns: repeat(
-              2,
-              minmax(0, 1fr)
-            ) !important;
+            grid-template-columns:
+              repeat(2, minmax(0, 1fr))
+              !important;
           }
         }
 
@@ -2417,11 +2460,13 @@ ${user?.email || ""}`;
           }
 
           .workspace-grid {
-            grid-template-columns: 1fr !important;
+            grid-template-columns:
+              1fr !important;
           }
 
           .account-grid {
-            grid-template-columns: 1fr !important;
+            grid-template-columns:
+              1fr !important;
           }
         }
 
@@ -2432,11 +2477,13 @@ ${user?.email || ""}`;
           }
 
           .credits-grid {
-            grid-template-columns: 1fr !important;
+            grid-template-columns:
+              1fr !important;
           }
 
           h1 {
-            letter-spacing: -2px !important;
+            letter-spacing:
+              -2px !important;
           }
         }
       `}</style>
