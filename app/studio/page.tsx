@@ -1,5 +1,6 @@
 
 "use client";
+import Script from "next/script";
 
 import {
   useEffect,
@@ -1056,18 +1057,48 @@ ${user?.email || ""}`;
 
       {/* AD */}
 
+
+      {/* ADSENSE + ADSTERRA */}
+
       <div
         style={{
-          maxWidth:
-            "1400px",
-          margin:
-            "14px auto 0",
-          padding:
-            "0 22px",
+          maxWidth: "1400px",
+          margin: "14px auto 0",
+          padding: "0 22px",
         }}
       >
         <AdSpace />
       </div>
+
+      {/* ADSTERRA AD CONTAINER */}
+
+      <div
+        style={{
+          width: "100%",
+          maxWidth: "1400px",
+          margin: "20px auto",
+          padding: "0 22px",
+          display: "flex",
+          justifyContent: "center",
+          overflow: "hidden",
+        }}
+      >
+        <div
+          id="container-d7edb7a79ce3f7c3a213ffdd36113a24"
+          style={{
+            width: "100%",
+            minHeight: "100px",
+          }}
+        />
+      </div>
+
+      <Script
+        async
+        data-cfasync="false"
+        src="https://brijmohan.org/21/d7edb7a79ce3f7c3a213ffdd36113a24"
+        strategy="afterInteractive"
+      />
+
 
       {/* CONTENT */}
 
